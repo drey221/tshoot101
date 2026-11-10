@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>tshoot101 | MPLS Service Troubleshooter</title>
+<style>
+:root{--bg:#0b1220;--panel:#111c2f;--panel2:#15233a;--line:#263650;--text:#edf4ff;--muted:#91a3bd;--cyan:#55d6e8;--green:#47d7a0;--amber:#ffc66d;--red:#ff7788;--shadow:0 18px 50px #02061755}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#17304c 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1440px;margin:auto;padding:26px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:26px}.brand{display:flex;align-items:center;gap:13px}.logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#4ce0ed,#3276e8);display:grid;place-items:center;color:#071323;font-weight:900;font-size:19px;box-shadow:0 8px 28px #39c7df33}.brand h1{font-size:21px;letter-spacing:-.5px;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.top-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#101b2d;border-radius:99px;padding:7px 11px;color:#c7d5e8;font-size:12px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #47d7a018}.hero{display:grid;grid-template-columns:1.45fr .75fr;gap:18px;margin-bottom:18px}.panel{background:linear-gradient(160deg,#142139ee,#0f192aee);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.search-panel{padding:25px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--cyan);font-weight:800}.search-panel h2{font-size:26px;line-height:1.2;letter-spacing:-.8px;margin:8px 0}.search-panel .sub{color:var(--muted);margin:0 0 21px;max-width:650px}.search-row{display:flex;gap:9px}.field{flex:1;min-width:0;position:relative}.field label{display:block;color:#b6c5da;font-size:12px;margin-bottom:7px;font-weight:650}.field input,.field select{width:100%;background:#0a1424;border:1px solid #30425f;border-radius:10px;color:var(--text);padding:13px 14px;outline:none}.field input:focus,.field select:focus{border-color:var(--cyan);box-shadow:0 0 0 3px #55d6e81a}.btn{border:0;border-radius:10px;padding:12px 16px;font-weight:800;transition:.18s;white-space:nowrap}.btn-primary{align-self:end;background:linear-gradient(135deg,#5de2ed,#70b9ff);color:#071323}.btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px)}.btn-ghost{background:#1a2940;border:1px solid #344763;color:#dbe8f8}.btn-ghost:hover{background:#223550}.helper{font-size:11px;color:var(--muted);margin-top:10px}.summary{padding:23px;display:flex;flex-direction:column;justify-content:space-between;gap:15px}.summary-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.summary h3{margin:5px 0 0;font-size:18px}.status{border-radius:99px;padding:5px 10px;font-size:11px;font-weight:800;background:#113b35;color:var(--green);border:1px solid #246556}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.mini-stat{background:#0c1728;border:1px solid #22334c;padding:13px;border-radius:12px}.mini-stat .num{font-size:22px;font-weight:800;letter-spacing:-.7px}.mini-stat .lbl{font-size:11px;color:var(--muted);margin-top:2px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:26px 0 12px}.section-title h2{font-size:16px;margin:0}.section-title p{font-size:12px;color:var(--muted);margin:3px 0 0}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.metric{padding:17px;min-height:125px}.metric-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px}.metric-icon{width:31px;height:31px;border-radius:9px;background:#20334e;color:var(--cyan);display:grid;place-items:center;font-size:15px}.metric-value{font-size:25px;font-weight:800;letter-spacing:-.7px;margin-top:13px}.metric-foot{font-size:11px;color:var(--muted);margin-top:2px}.green{color:var(--green)!important}.amber{color:var(--amber)!important}.cyan{color:var(--cyan)!important}.content-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}.content-panel{padding:20px;min-width:0}.panel-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px}.panel-heading h3{margin:0;font-size:15px}.panel-heading p{margin:3px 0 0;color:var(--muted);font-size:11px}.subtle-tag{font-size:10px;color:#a9c2df;background:#1a2b43;border:1px solid #2a3d59;padding:5px 8px;border-radius:7px;white-space:nowrap}.interface-line{background:#0c1728;border:1px solid #253852;border-radius:12px;padding:15px;margin-bottom:14px}.interface-main{display:flex;justify-content:space-between;align-items:center;gap:12px}.interface-main strong{font-size:15px}.interface-main .desc{font-size:11px;color:var(--muted);margin-top:3px}.state{font-size:11px;color:var(--green);display:inline-flex;align-items:center;gap:6px;font-weight:800}.state:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}.interface-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.meta-box{padding:10px;background:#142139;border-radius:9px}.meta-box span{display:block;color:var(--muted);font-size:10px}.meta-box b{display:block;font-size:12px;margin-top:4px;overflow-wrap:anywhere}.power-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.power{padding:12px;background:#0c1728;border:1px solid #253852;border-radius:10px}.power-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.power strong{font-size:18px;display:block;margin:5px 0 8px}.bar{height:5px;background:#26364c;border-radius:10px;overflow:hidden}.bar span{height:100%;display:block;background:linear-gradient(90deg,#3ecfa3,#5de2ed);border-radius:10px}.power small{font-size:10px;color:var(--muted);display:block;margin-top:7px}.power-note{font-size:11px;color:var(--muted);margin-top:12px}.table-panel{padding:20px;margin-top:16px}.table-tools{display:flex;gap:9px;align-items:center}.table-tools input{background:#0a1424;border:1px solid #30425f;border-radius:9px;padding:9px 11px;color:var(--text);min-width:190px;outline:none}.table-wrap{overflow:auto;border:1px solid #263650;border-radius:11px}table{width:100%;border-collapse:collapse;min-width:750px}thead{background:#16243a}th{text-align:left;color:#a9bbd2;font-size:10px;text-transform:uppercase;letter-spacing:.7px;padding:12px 14px;font-weight:750}td{padding:12px 14px;border-top:1px solid #223149;font-size:12px;color:#dce7f5}tbody tr:hover{background:#16243a}td.mac{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#72dce8;font-weight:700}.type{font-size:10px;border:1px solid #315044;background:#12372f;color:#73e4b6;border-radius:6px;padding:4px 7px}.empty{text-align:center;padding:28px;color:var(--muted)}.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}.info-card{padding:19px}.info-card h3{font-size:14px;margin:0 0 13px}.info-list{display:grid;gap:11px}.info-row{display:flex;justify-content:space-between;gap:16px;font-size:12px}.info-row span{color:var(--muted)}.info-row b{text-align:right;font-weight:650;overflow-wrap:anywhere}.threshold{margin-top:14px;padding:12px;background:#0c1728;border-radius:10px;border:1px solid #253852;font-size:11px;color:var(--muted)}.threshold strong{color:var(--amber)}.footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#71849e;font-size:11px;margin:23px 2px 5px}.toast{position:fixed;right:22px;bottom:22px;background:#15243a;border:1px solid #36506e;color:var(--text);padding:13px 16px;border-radius:12px;box-shadow:var(--shadow);max-width:360px;display:none;z-index:10}.toast.show{display:block;animation:slide .2s ease}@keyframes slide{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}.loading{opacity:.7;pointer-events:none}.loading .btn-primary:after{content:" …"}@media(max-width:950px){.hero,.content-grid,.bottom-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.shell{padding:15px}.topbar{align-items:flex-start}.top-right{justify-content:flex-end}.brand h1{font-size:18px}.hero{gap:12px}.search-panel,.summary,.content-panel,.table-panel,.info-card{padding:16px}.search-panel h2{font-size:23px}.search-row{flex-direction:column}.btn-primary{width:100%}.cards{gap:9px}.metric{padding:13px;min-height:116px}.metric-value{font-size:22px}.section-title{align-items:flex-start;flex-direction:column}.table-tools{width:100%}.table-tools input{width:100%;min-width:0}.panel-heading{align-items:flex-start}.interface-meta{grid-template-columns:1fr 1fr}.power-list{gap:8px}.power{padding:10px}.top-right .pill:last-child{display:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand"><div class="logo">t101</div><div><h1>tshoot101 <span style="color:var(--cyan)">/</span></h1><p>MPLS Service Troubleshooter</p></div></div>
+    <div class="top-right"><span class="pill"><span class="dot"></span> Demo data loaded</span><span class="pill">● Huawei NetEngine 8000</span></div>
+  </header>
+
+  <section class="hero">
+    <div class="panel search-panel">
+      <div class="eyebrow">Service diagnostics</div>
+      <h2>Find the signal.<br>Fix the service.</h2>
+      <p class="sub">Cari service berdasarkan CRT atau VLAN untuk melihat status interface, optical power, dan MAC address dalam satu tampilan.</p>
+      <form id="searchForm">
+        <div class="search-row">
+          <div class="field"><label for="serviceInput">CRT / VLAN ID</label><input id="serviceInput" autocomplete="off" placeholder="Contoh: CRT2108004670 atau 1000640" value="CRT2108004670"></div>
+          <button class="btn btn-primary" type="submit">⌕ &nbsp; Check service</button>
+        </div>
+      </form>
+      <div class="helper">Contoh data perangkat: JI-JMR-01-PE1-JMBR · VRP V800R025C00SPC500</div>
+    </div>
+    <div class="panel summary">
+      <div class="summary-head"><div><div class="eyebrow">Overall service status</div><h3 id="serviceTitle">CRT2108004670</h3></div><span class="status" id="overallStatus">● UP</span></div>
+      <div class="summary-grid">
+        <div class="mini-stat"><div class="num" id="macCount">10</div><div class="lbl">MAC address ditemukan</div></div>
+        <div class="mini-stat"><div class="num">4/4</div><div class="lbl">Optical lanes terbaca</div></div>
+        <div class="mini-stat"><div class="num" id="vlanValue">1000640</div><div class="lbl">VLAN / VSI</div></div>
+        <div class="mini-stat"><div class="num" style="font-size:17px">10:30 WIB</div><div class="lbl">Demo refresh time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title"><div><h2>Service health overview</h2><p>Ringkasan kondisi service yang dipilih</p></div><button class="btn btn-ghost" id="refreshBtn">↻ Refresh demo</button></div>
+  <section class="cards">
+    <div class="panel metric"><div class="metric-top"><span>Port status</span><span class="metric-icon">⌁</span></div><div class="metric-value green" id="portStatusMetric">UP / UP</div><div class="metric-foot">Physical · Protocol</div></div>
+    <div class="panel metric"><div class="metric-top"><span>RX optical power</span><span class="metric-icon">↓</span></div><div class="metric-value cyan">-10.28 <span style="font-size:13px">dBm avg</span></div><div class="metric-foot">4 lane receiver · sample data</div></div>
+    <div class="panel metric"><div class="metric-top"><span>TX optical power</span><span class="metric-icon">↑</span></div><div class="metric-value cyan">-0.04 <span style="font-size:13px">dBm avg</span></div><div class="metric-foot">4 lane transmitter · sample data</div></div>
+    <div class="panel metric"><div class="metric-top"><span>Last physical up</span><span class="metric-icon">◷</span></div><div class="metric-value" style="font-size:17px;margin-top:18px">29 Oct 2026</div><div class="metric-foot">08:50:57 +07:00</div></div>
+  </section>
+
+  <div class="section-title"><div><h2>Port & optical diagnostics</h2><p>Interface yang terkait dengan service</p></div><span class="subtle-tag">DEVICE · JI-JMR-01-PE1-JMBR</span></div>
+  <section class="content-grid">
+    <div class="panel content-panel">
+      <div class="panel-heading"><div><h3>Interface details</h3><p>Physical interface dan service description</p></div><span class="status">● UP / UP</span></div>
+      <div class="interface-line">
+        <div class="interface-main"><div><strong>100GE0/1/83 <span style="color:var(--cyan)">(40G)</span></strong><div class="desc">CRT2108004670-JAB-GLOBAL_MEDIA_DATA_PRIMA_JEMBER-IDCD3-30Gbps</div></div><span class="state">UP</span></div>
+        <div class="interface-meta">
+          <div class="meta-box"><span>Admin / Oper</span><b>up / up</b></div>
+          <div class="meta-box"><span>VLAN / VSI</span><b id="interfaceVlan">1000640</b></div>
+          <div class="meta-box"><span>Last physical up</span><b>29 Oct 2026</b></div>
+        </div>
+      </div>
+      <div class="panel-heading" style="margin:20px 0 12px"><div><h3>Optical power per lane</h3><p>TX/RX transceiver readings</p></div><span class="subtle-tag">4 LANES</span></div>
+      <div class="power-list">
+        <div class="power"><div class="power-top"><span>RX0</span><span>Receive</span></div><strong>-10.12 dBm</strong><div class="bar"><span style="width:43%"></span></div><small>RX warning: -16.798 to 4.299 dBm</small></div>
+        <div class="power"><div class="power-top"><span>TX0</span><span>Transmit</span></div><strong>0.41 dBm</strong><div class="bar"><span style="width:66%"></span></div><small>TX warning: -8.401 to 4.299 dBm</small></div>
+        <div class="power"><div class="power-top"><span>RX1</span><span>Receive</span></div><strong>-10.50 dBm</strong><div class="bar"><span style="width:41%"></span></div><small>Within reported warning range</small></div>
+        <div class="power"><div class="power-top"><span>TX1</span><span>Transmit</span></div><strong>-0.62 dBm</strong><div class="bar"><span style="width:59%"></span></div><small>Within reported warning range</small></div>
+        <div class="power"><div class="power-top"><span>RX2</span><span>Receive</span></div><strong>-10.92 dBm</strong><div class="bar"><span style="width:39%"></span></div><small>Within reported warning range</small></div>
+        <div class="power"><div class="power-top"><span>TX2</span><span>Transmit</span></div><strong>0.37 dBm</strong><div class="bar"><span style="width:65%"></span></div><small>Within reported warning range</small></div>
+        <div class="power"><div class="power-top"><span>RX3</span><span>Receive</span></div><strong>-9.58 dBm</strong><div class="bar"><span style="width:46%"></span></div><small>Within reported warning range</small></div>
+        <div class="power"><div class="power-top"><span>TX3</span><span>Transmit</span></div><strong>-0.02 dBm</strong><div class="bar"><span style="width:63%"></span></div><small>Within reported warning range</small></div>
+      </div>
+      <div class="power-note">ⓘ Power meter memakai skala visual indikatif. Gunakan nilai dan threshold perangkat untuk diagnosis aktual.</div>
+    </div>
+
+    <div class="panel content-panel">
+      <div class="panel-heading"><div><h3>Service path snapshot</h3><p>Ringkasan informasi yang berhasil dikumpulkan</p></div><span class="subtle-tag">READ ONLY</span></div>
+      <div class="info-list">
+        <div class="info-row"><span>Device hostname</span><b>JI-JMR-01-PE1-JMBR</b></div>
+        <div class="info-row"><span>Platform</span><b>Huawei NetEngine 8000E F2D</b></div>
+        <div class="info-row"><span>VRP version</span><b>V800R025C00SPC500</b></div>
+        <div class="info-row"><span>Patch</span><b>V800R025SPH120</b></div>
+        <div class="info-row"><span>Service input</span><b id="serviceInputSummary">CRT2108004670</b></div>
+        <div class="info-row"><span>Interface</span><b>100GE0/1/83 (40G)</b></div>
+        <div class="info-row"><span>Physical state</span><b class="green">UP</b></div>
+        <div class="info-row"><span>Protocol state</span><b class="green">UP</b></div>
+        <div class="info-row"><span>Last physical up time</span><b>2026-10-29 08:50:57+07:00</b></div>
+      </div>
+      <div class="threshold"><strong>Threshold note</strong><br>RX warning range: [-16.798, 4.299] dBm<br>TX warning range: [-8.401, 4.299] dBm<br><span style="display:block;margin-top:7px">Semua lane contoh berada di dalam warning range yang diberikan.</span></div>
+    </div>
+  </section>
+
+  <section class="panel table-panel">
+    <div class="panel-heading"><div><h3>MAC address table</h3><p id="macDescription">10 matching entries · VLAN / VSI 1000640</p></div><div class="table-tools"><input id="macSearch" placeholder="Filter MAC / port..." aria-label="Filter MAC address"></div></div>
+    <div class="table-wrap"><table><thead><tr><th>MAC address</th><th>VLAN / VSI</th><th>PE VLAN</th><th>CE VLAN</th><th>Port / Peer</th><th>Type</th><th>LSP / LSR-ID</th></tr></thead><tbody id="macBody"></tbody></table></div>
+    <div class="helper">Filter tabel secara langsung dengan MAC address, VLAN, port, atau tipe entry.</div>
+  </section>
+
+  <section class="bottom-grid">
+    <div class="panel info-card"><h3>⏱ Last-up history</h3><div class="info-list"><div class="info-row"><span>Last physical up</span><b>29 Oct 2026 · 08:50:57 +07:00</b></div><div class="info-row"><span>Data source</span><b>CLI sample</b></div><div class="info-row"><span>Event tracking</span><b class="amber">Backend belum terhubung</b></div></div></div>
+    <div class="panel info-card"><h3>⚙ Data collection status</h3><div class="info-list"><div class="info-row"><span>SNMP</span><b class="amber">Not connected</b></div><div class="info-row"><span>NETCONF</span><b class="amber">Not connected</b></div><div class="info-row"><span>SSH collector</span><b class="amber">Not connected</b></div></div><div class="helper">UI ini memakai data contoh lokal. Koneksi router harus dilakukan oleh backend, bukan browser.</div></div>
+  </section>
+  <footer class="footer"><span>tshoot101 · MPLS Service Troubleshooter</span><span>Prototype UI · Local sample data · No router connection</span></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const macs=[
+ ["000e-1e7e-3c32","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["ac61-75cb-dbb0","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["28b4-484d-9c0e","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["dc2c-6e90-3ed3","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["700f-6ab1-4cfc","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["c81f-be1f-5170","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["e8a5-5acc-46f7","1000640","-","-","Eth-Trunk0","dynamic","1/24640"],
+ ["0855-31b4-8113","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["04f4-1caf-e3cd","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"],
+ ["789a-18a2-6464","1000640","2","-","100GE0/1/83.1000640","dynamic","1/-"]
+];
+const body=document.getElementById('macBody');
+function renderMacs(){
+ const q=document.getElementById('macSearch').value.trim().toLowerCase();
+ const rows=macs.filter(r=>r.join(' ').toLowerCase().includes(q));
+ body.innerHTML=rows.length?rows.map(r=>`<tr><td class="mac">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td><span class="type">${r[5]}</span></td><td>${r[6]}</td></tr>`).join(''):`<tr><td colspan="7" class="empty">Tidak ada MAC address yang cocok dengan filter.</td></tr>`;
+ document.getElementById('macDescription').textContent=`${rows.length} dari ${macs.length} matching entries · VLAN / VSI 1000640`;
+}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),3400)}
+document.getElementById('macSearch').addEventListener('input',renderMacs);
+document.getElementById('searchForm').addEventListener('submit',e=>{
+ e.preventDefault();const value=document.getElementById('serviceInput').value.trim();
+ if(!value){toast('Masukkan CRT atau VLAN terlebih dahulu.');return}
+ document.getElementById('serviceTitle').textContent=value;
+ document.getElementById('serviceInputSummary').textContent=value;
+ toast('Mode prototype: data contoh ditampilkan. Hubungkan backend untuk lookup CRT/VLAN secara real-time.');
+});
+document.getElementById('refreshBtn').addEventListener('click',()=>toast('Data contoh diperbarui di tampilan. Belum ada koneksi ke router.'));
+renderMacs();
+</script>
+</body>
+</html>
